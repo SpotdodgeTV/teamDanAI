@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:moral_app/home.dart';
-import 'package:moral_app/sign_up.dart';
 
-class LogIN extends StatefulWidget {
+class LoginDemo extends StatefulWidget {
   @override
-  _LogINtate createState() => _LogINtate();
+  _LoginDemoState createState() => _LoginDemoState();
 }
 
-class _LogINtate extends State<LogIN> {
+class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(232, 228, 214, 1),
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(235, 204, 102, 1),
-        title: Text("Log In"),
+        title: Text("Sign Up"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -62,9 +61,10 @@ class _LogINtate extends State<LogIN> {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: ElevatedButton(
                     child: Text(
-                      'Login ',
+                      'Sign Up ',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 39, 31, 1), fontSize: 20),
+                          color: Color.fromARGB(255, 39, 31, 1),
+                          fontSize: 20),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -83,22 +83,7 @@ class _LogINtate extends State<LogIN> {
                 child: Center(
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 62),
-                    child: Text('Dont have an account? '),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 1.0),
-                    child: InkWell(
-                        onTap: () => Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                              builder: (context) => LoginDemo(),
-                            )),
-                        child: Text(
-                          'Sign Up Here!',
-                          style: TextStyle(fontSize: 14, color: Colors.blue),
-                        )),
-                  )
+                  
                 ],
               ),
             ))
