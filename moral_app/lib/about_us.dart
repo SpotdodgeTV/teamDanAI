@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:moral_app/home.dart';
 import 'package:moral_app/screens/login/login_screen.dart';
 
@@ -22,6 +23,23 @@ class AboutUs extends StatelessWidget {
           child: Column(
             children: [
               Container(
+                  width: 150,
+                  height: 150,
+                  child: const Image(
+                    image: AssetImage(
+                      'images/robot.png',
+                    ),
+                  )),
+              Container(
+                width: 150,
+                height: 150,
+                child: const Image(
+                  image:AssetImage(
+                    'images/top_app.png',
+                  )
+                )
+              ),
+              Container(
                 child: ElevatedButton(
                   //  TODO: change where button is
                   style: ElevatedButton.styleFrom(
@@ -36,12 +54,6 @@ class AboutUs extends StatelessWidget {
                   },
                 ),
               ),
-              Container(
-                  child: const Image(
-                image: AssetImage(
-                  'images/robot.png',
-                ),
-              ))
             ],
           ),
         ));
