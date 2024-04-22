@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:moral_app/home.dart';
 import 'package:moral_app/sign_up.dart';
+import 'package:firebase_core/firebase_core.dart';
+//import 'screens/login/firebase_options.dart';
 
 class LogIN extends StatefulWidget {
   @override
@@ -8,6 +11,68 @@ class LogIN extends StatefulWidget {
 }
 
 class _LogINtate extends State<LogIN> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void signUserIn() async {
+
+    // show loading circle
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: usernameController.text, 
+      password: passwordController.text, 
+    );
+    Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      // Wrong email
+      if(e.code == 'user-not-found') {
+        wrongEmailMessage();
+      }  // Wrong password
+      else if (e.code == 'wrong-password') {
+        wrongPasswordMessage();
+      }
+    }
+
+    // circle go away
+    Navigator.pop(context);
+  }
+
+  // wrong email message
+  void wrongEmailMessage() {
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect email'),
+        );
+      },
+    );
+  }
+
+
+  // wrong password message
+  void wrongPasswordMessage() {
+    showDialog(
+      context: context, 
+      builder: (context) {
+        return const AlertDialog(
+          title: Text('Incorrect password'),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,21 +97,23 @@ class _LogINtate extends State<LogIN> {
                     child: Image.asset('images/robot.png')),
               ),
             ),
-            const Padding(
+            Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                controller: usernameController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Phone number, email or username',
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
-            const Padding(
+            Padding(
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -54,6 +121,11 @@ class _LogINtate extends State<LogIN> {
                     hintText: 'Enter secure password'),
               ),
             ),
+
+            // MyButton(
+            //   onTap: signUserIn,
+            // ),
+
             SizedBox(
               height: 65,
               width: 360,

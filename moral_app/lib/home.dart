@@ -1,15 +1,29 @@
+import 'dart:ui';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:moral_app/about_us.dart';
-import 'package:moral_app/screens/login/login_screen.dart';
+import 'package:moral_app/login_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
+
+  // Sign user out method
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(232, 228, 214, 1),
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: signUserOut, 
+              icon: Icon(Icons.logout)
+              )
+            ],
           backgroundColor: const Color.fromRGBO(235, 204, 102, 1),
           title: const Text('Ask A Question'),
           centerTitle: true,
