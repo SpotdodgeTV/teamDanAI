@@ -23,21 +23,59 @@ class AboutUs extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                  width: 150,
-                  height: 150,
+                  width: 75,
+                  height: 75,
                   child: const Image(
                     image: AssetImage(
                       'images/robot.png',
                     ),
                   )),
               Container(
-                width: 150,
-                height: 150,
-                child: const Image(
-                  image:AssetImage(
-                    'images/top_app.png',
-                  )
-                )
+                  width: 100,
+                  height: 100,
+                  child: const Image(
+                      image: AssetImage(
+                    'images/delphina.png',
+                  ))),
+              Container(
+                child: Center(
+                    child: Text(
+                        'Delphina Rivas \nJunior-CS and CRCP \nFun Fact: They rode horse for 7 years from 7-14\n',
+                        textAlign: TextAlign.start,
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color.fromARGB(255, 42, 0, 0)))),
+              ),
+              Container(
+                  width: 100,
+                  height: 100,
+                  child: const Image(
+                      image: AssetImage(
+                    'images/anika.png',
+                  ))),
+              Container(
+                child: Center(
+                    child: Text(
+                        'Anika Saiprabhu \nSophomore-CS, Data Science, Music\nFun Fact: They make clothes and pant chains\n',
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color.fromARGB(255, 42, 0, 0)))),
+              ),
+              Container(
+                  width: 100,
+                  height: 100,
+                  child: const Image(
+                      image: AssetImage(
+                    'images/nico.png',
+                  ))),
+              Container(
+                child: Center(
+                    child: Text(
+                        'Nico Morin\nJunior-CS\nFun Fact: They have peaked over 12 mountain\n',
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            color: Color.fromARGB(255, 42, 0, 0)))),
               ),
               Container(
                 child: ElevatedButton(
